@@ -1,0 +1,86 @@
+[
+  {
+    "model": "stores.store",
+    "pk": 1,
+    "fields": {
+      "name": "Boteco Central",
+      "doc_number": "12345678901234",
+      "description": "Bar tradicional do centro.",
+      "address": null,
+      "manager": 2,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "stores.store",
+    "pk": 2,
+    "fields": {
+      "name": "Pub 42",
+      "doc_number": "98765432100000",
+      "description": "Pub descolado com música ao vivo.",
+      "address": null,
+      "manager": 3,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "stores.store",
+    "pk": 3,
+    "fields": {
+      "name": "Bar do Léo",
+      "doc_number": "11223344556677",
+      "description": "Cervejas artesanais e porções generosas.",
+      "address": null,
+      "manager": 2,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "stores.store_admins",
+    "pk": 1,
+    "fields": {
+      "store": 1,
+      "user": 2
+    }
+  },
+  {
+    "model": "stores.store_admins",
+    "pk": 2,
+    "fields": {
+      "store": 1,
+      "user": 3
+    }
+  },
+  {
+    "model": "stores.store_admins",
+    "pk": 3,
+    "fields": {
+      "store": 2,
+      "user": 2
+    }
+  },
+  {
+    "model": "stores.store_admins",
+    "pk": 4,
+    "fields": {
+      "store": 2,
+      "user": 3
+    }
+  },
+  {
+    "model": "stores.store_admins",
+    "pk": 5,
+    "fields": {
+      "store": 3,
+      "user": 2
+    }
+  },
+  {
+    "model": "stores.store_admins",
+    "pk": 6,
+    "fields": {
+      "store": 3,
+      "user": 3
+    }
+  }
+]

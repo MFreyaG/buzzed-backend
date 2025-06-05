@@ -1,0 +1,35 @@
+[
+  {
+    "model": "drinks.storedrink",
+    "pk": 1,
+    "fields": {
+      "basedrink_ptr": 1,
+      "store": 1,
+      "price": "15.00",
+      "description": "Caipirinha clássica com limão.",
+      "image_url": "https://example.com/caipirinha.jpg"
+    }
+  },
+  {
+    "model": "drinks.storedrink",
+    "pk": 2,
+    "fields": {
+      "basedrink_ptr": 1,
+      "store": 2,
+      "price": "22.00",
+      "description": "Gin com tônica e zimbro.",
+      "image_url": "https://example.com/gin-tonica.jpg"
+    }
+  },
+  {
+    "model": "drinks.storedrink",
+    "pk": 3,
+    "fields": {
+      "basedrink_ptr": 1,
+      "store": 3,
+      "price": "18.50",
+      "description": "Refrescante mojito com hortelã.",
+      "image_url": "https://example.com/mojito.jpg"
+    }
+  }
+]
