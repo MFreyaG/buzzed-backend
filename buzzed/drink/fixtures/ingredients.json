@@ -1,0 +1,12 @@
+[
+  { "model": "drink.ingredient", "pk": 1, "fields": { "name": "Vodka" } },
+  { "model": "drink.ingredient", "pk": 2, "fields": { "name": "Gin" } },
+  { "model": "drink.ingredient", "pk": 3, "fields": { "name": "Rum" } },
+  { "model": "drink.ingredient", "pk": 4, "fields": { "name": "Tequila" } },
+  { "model": "drink.ingredient", "pk": 5, "fields": { "name": "Triple Sec" } },
+  { "model": "drink.ingredient", "pk": 6, "fields": { "name": "Lime Juice" } },
+  { "model": "drink.ingredient", "pk": 7, "fields": { "name": "Cola" } },
+  { "model": "drink.ingredient", "pk": 8, "fields": { "name": "Tonic Water" } },
+  { "model": "drink.ingredient", "pk": 9, "fields": { "name": "Mint" } },
+  { "model": "drink.ingredient", "pk": 10, "fields": { "name": "Sugar Syrup" } }
+]

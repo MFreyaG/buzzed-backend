@@ -1,0 +1,50 @@
+[
+  {
+    "model": "user.contact",
+    "pk": 1,
+    "fields": {
+      "user1": 1,
+      "user2": 2
+    }
+  },
+  {
+    "model": "user.contact",
+    "pk": 2,
+    "fields": {
+      "user1": 1,
+      "user2": 3
+    }
+  },
+  {
+    "model": "user.contact",
+    "pk": 3,
+    "fields": {
+      "user1": 1,
+      "user2": 4
+    }
+  },
+  {
+    "model": "user.contact",
+    "pk": 4,
+    "fields": {
+      "user1": 2,
+      "user2": 1
+    }
+  },
+  {
+    "model": "user.contact",
+    "pk": 5,
+    "fields": {
+      "user1": 2,
+      "user2": 4
+    }
+  },
+  {
+    "model": "user.contact",
+    "pk": 6,
+    "fields": {
+      "user1": 3,
+      "user2": 2
+    }
+  }
+]

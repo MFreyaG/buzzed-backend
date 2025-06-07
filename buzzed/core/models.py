@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Address(models.Model):
     country = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
@@ -9,4 +10,3 @@ class Address(models.Model):
     number = models.CharField(max_length=10, blank=True)
     complement = models.CharField(max_length=30, blank=True)
     postal_code = models.CharField(max_length=15)
-    

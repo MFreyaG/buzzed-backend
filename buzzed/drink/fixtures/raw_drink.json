@@ -1,0 +1,26 @@
+[
+  {
+    "model": "drink.rawdrink",
+    "pk": 1,
+    "fields": {
+      "basedrink_ptr": 2,
+      "store_name": "Bar do Carlos"
+    }
+  },
+  {
+    "model": "drink.rawdrink",
+    "pk": 2,
+    "fields": {
+      "basedrink_ptr": 2,
+      "store_name": "Jango Balango"
+    }
+  },
+  {
+    "model": "drink.rawdrink",
+    "pk": 3,
+    "fields": {
+      "basedrink_ptr": 2,
+      "store_name": "A Taberna"
+    }
+  }
+]
