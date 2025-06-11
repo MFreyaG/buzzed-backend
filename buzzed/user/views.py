@@ -47,6 +47,8 @@ class LoginView(APIView):
 
 
 class UserView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request, user_pk):
         user = get_object_or_404(User, pk=user_pk)
         serializer = UserSerializer(user)
@@ -77,7 +79,6 @@ class ContactView(APIView):
 
     def post(self, request):
         serializer = ContactSerializer(data=request.data, context={"request": request})
-
         if serializer.is_valid():
             try:
                 contact = serializer.save()

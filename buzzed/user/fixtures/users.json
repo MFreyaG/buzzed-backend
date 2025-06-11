@@ -9,7 +9,8 @@
       "first_name": "Test",
       "last_name": "User",
       "icon_url": "https://testurl.com",
-      "is_active": true
+      "is_active": true,
+      "address": 1
     }
   },
   {

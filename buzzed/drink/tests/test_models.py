@@ -7,6 +7,7 @@ from user.models import User
 
 class FavoriteDrinkTestCase(TestCase):
     fixtures = [
+        "addresses.json",
         "users.json",
         "ingredients.json",
         "base_drink.json",

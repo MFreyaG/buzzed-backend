@@ -1,0 +1,44 @@
+[
+  {
+    "model": "core.address",
+    "pk": 1,
+    "fields": {
+      "country": "Brazil",
+      "state": "Minas Gerais",
+      "city": "Belo Horizonte",
+      "neighborhood": "Savassi",
+      "street": "Rua Pernambuco",
+      "number": "1000",
+      "complement": "Apt 501",
+      "postal_code": "30130-160"
+    }
+  },
+  {
+    "model": "core.address",
+    "pk": 2,
+    "fields": {
+      "country": "United States",
+      "state": "California",
+      "city": "San Francisco",
+      "neighborhood": "Financial District",
+      "street": "Market St",
+      "number": "123",
+      "complement": "",
+      "postal_code": "94105"
+    }
+  },
+  {
+    "model": "core.address",
+    "pk": 3,
+    "fields": {
+      "country": "Canada",
+      "state": "Ontario",
+      "city": "Toronto",
+      "neighborhood": "Downtown",
+      "street": "Queen St W",
+      "number": "500",
+      "complement": "Unit 10",
+      "postal_code": "M5V 2C6"
+    }
+  }
+]

@@ -14,19 +14,17 @@ class AuthTestCase(APITestCase):
         )
 
     def test_valid_signup(self):
-        valid_signup_data = {
+        signup_data = {
             "username": "NewUser",
             "email": "newuser@email.com",
             "password": "T3stP4as5w0rd",
         }
-        response = self.client.post(
-            reverse("signup"), data=valid_signup_data, format="json"
-        )
+        response = self.client.post(reverse("signup"), data=signup_data, format="json")
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        created_user = User.objects.get(username=valid_signup_data["username"])
-        self.assertEqual(valid_signup_data["username"], created_user.username)
-        self.assertEqual(valid_signup_data["email"], created_user.email)
+        created_user = User.objects.get(username=signup_data["username"])
+        self.assertEqual(signup_data["username"], created_user.username)
+        self.assertEqual(signup_data["email"], created_user.email)
         self.assertIn("access", response.data)
         self.assertIn("refresh", response.data)
 
@@ -42,13 +40,11 @@ class AuthTestCase(APITestCase):
         self.assertNotIn("refresh", response.data)
 
     def test_valid_login(self):
-        valid_login_data = {
+        login_data = {
             "email": "testuser@email.com",
             "password": "t3stp4assw0rd",
         }
-        response = self.client.post(
-            reverse("login"), data=valid_login_data, format="json"
-        )
+        response = self.client.post(reverse("login"), data=login_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn("access", response.data)
         self.assertIn("refresh", response.data)
@@ -77,7 +73,7 @@ class AuthTestCase(APITestCase):
 
 
 class UserTestCase(APITestCase):
-    fixtures = ["users.json"]
+    fixtures = ["addresses.json", "users.json"]
 
     def setUp(self):
         self.user = User.objects.get(pk=1)
@@ -137,7 +133,7 @@ class UserTestCase(APITestCase):
 
 
 class ContactTestCase(APITestCase):
-    fixtures = ["users.json", "contacts.json"]
+    fixtures = ["addresses.json", "users.json", "contacts.json"]
 
     def setUp(self):
         self.user = User.objects.get(pk=2)

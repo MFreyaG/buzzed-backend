@@ -5,7 +5,7 @@ from user.models import Contact, User
 
 
 class ContactTestCase(TestCase):
-    fixtures = ["users.json"]
+    fixtures = ["addresses.json", "users.json"]
 
     def test_create_multiple_contacts(self):
         user1 = User.objects.get(username="User1")
