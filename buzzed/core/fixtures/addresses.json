@@ -3,14 +3,14 @@
     "model": "core.address",
     "pk": 1,
     "fields": {
-      "country": "Brazil",
-      "state": "Minas Gerais",
-      "city": "Belo Horizonte",
-      "neighborhood": "Savassi",
-      "street": "Rua Pernambuco",
-      "number": "1000",
-      "complement": "Apt 501",
-      "postal_code": "30130-160"
+      "country": "United States",
+      "state": "Bikini Bottom",
+      "city": "Pacific Ocean",
+      "neighborhood": "Kelp Forest",
+      "street": "Conch Street",
+      "number": "831",
+      "complement": "Under the sea",
+      "postal_code": "00001"
     }
   },
   {
@@ -18,27 +18,41 @@
     "pk": 2,
     "fields": {
       "country": "United States",
-      "state": "California",
-      "city": "San Francisco",
-      "neighborhood": "Financial District",
-      "street": "Market St",
-      "number": "123",
-      "complement": "",
-      "postal_code": "94105"
+      "state": "New York",
+      "city": "New York",
+      "neighborhood": "Upper West Side",
+      "street": "W 105th St",
+      "number": "245",
+      "complement": "Near MacLaren's Bar",
+      "postal_code": "10025"
     }
   },
   {
     "model": "core.address",
     "pk": 3,
     "fields": {
-      "country": "Canada",
-      "state": "Ontario",
-      "city": "Toronto",
-      "neighborhood": "Downtown",
-      "street": "Queen St W",
-      "number": "500",
-      "complement": "Unit 10",
-      "postal_code": "M5V 2C6"
+      "country": "Westeros",
+      "state": "The North",
+      "city": "The Wall",
+      "neighborhood": "Castle Black",
+      "street": "Castle Black Main Gate",
+      "number": "1",
+      "complement": "Headquarters of the Night's Watch",
+      "postal_code": "NW001"
+    }
+  },
+  {
+    "model": "core.address",
+    "pk": 4,
+    "fields": {
+      "country": "United States",
+      "state": "Wyoming",
+      "city": "Jackson",
+      "neighborhood": "Jackson Hole",
+      "street": "Jackson Town Square",
+      "number": "10",
+      "complement": "Near the Fireflies HQ",
+      "postal_code": "83001"
     }
   }
 ]

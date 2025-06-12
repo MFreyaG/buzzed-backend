@@ -9,9 +9,7 @@ from store.serializer import StoreSerializer
 
 
 class StoreView(APIView):
-    def get(self, request, store_pk):
-        store = get_object_or_404(Store, pk=store_pk)
-        serializer = ...
+    def get(self, request, store_pk): ...
 
     def post(self, request): ...
 

@@ -3,33 +3,38 @@
     "model": "user.user",
     "pk": 1,
     "fields": {
-      "username": "User1",
-      "email": "user1@email.com",
+      "username": "johnsnow",
+      "email": "john.snow@thenightswatch.com",
       "password": "pbkdf2_sha256$260000$fakehash1",
-      "first_name": "Test",
-      "last_name": "User",
+      "first_name": "Jon",
+      "last_name": "Snow",
       "icon_url": "https://testurl.com",
       "is_active": true,
-      "address": 1
+      "address": 3
     }
   },
   {
     "model": "user.user",
     "pk": 2,
     "fields": {
-      "username": "User2",
-      "email": "user2@email.com",
-      "password": "pbkdf2_sha256$260000$fakehash2",
-      "is_active": true
+      "username": "spongebob",
+      "email": "spongebob@bikini.bottom",
+      "password": "pbkdf2_sha250000$fakehash2",
+      "first_name": "SpongeBob",
+      "last_name": "SquarePants",
+      "is_active": true,
+      "address": 1
     }
   },
   {
     "model": "user.user",
     "pk": 3,
     "fields": {
-      "username": "User3",
-      "email": "user3@email.com",
-      "password": "pbkdf2_sha256$260000$fakehash3",
+      "username": "elliewilliams",
+      "email": "ellie@jackson.wy",
+      "password": "pbkdf2_sha260000$fakehash3",
+      "first_name": "Ellie",
+      "last_name": "Williams",
       "is_active": true
     }
   },
@@ -37,11 +42,14 @@
     "model": "user.user",
     "pk": 4,
     "fields": {
-      "username": "User4",
-      "email": "user4@email.com",
+      "username": "barneystinson",
+      "email": "barney@legendary.com",
       "password": "pbkdf2_sha256$260000$fakehash4",
+      "first_name": "Barney",
+      "last_name": "Stinson",
       "is_active": true,
-      "is_admin": true
+      "is_admin": true,
+      "address": 2
     }
   }
 ]

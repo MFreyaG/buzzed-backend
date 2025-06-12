@@ -3,10 +3,10 @@
     "model": "store.store",
     "pk": 1,
     "fields": {
-      "name": "Boteco Central",
+      "name": "The Krusty Krab",
       "doc_number": "12345678901234",
-      "description": "Bar tradicional do centro.",
-      "address": null,
+      "description": "Home of the Krabby Patty!",
+      "address": 1,
       "manager": 2,
       "icon_url": ""
     }
@@ -15,10 +15,10 @@
     "model": "store.store",
     "pk": 2,
     "fields": {
-      "name": "Pub 42",
+      "name": "McLaren's Pub",
       "doc_number": "98765432100000",
-      "description": "Pub descolado com música ao vivo.",
-      "address": null,
+      "description": "The legendary bar from How I Met Your Mother.",
+      "address": 2,
       "manager": 3,
       "icon_url": ""
     }
@@ -27,10 +27,10 @@
     "model": "store.store",
     "pk": 3,
     "fields": {
-      "name": "Bar do Léo",
+      "name": "The Leaky Cauldron",
       "doc_number": "11223344556677",
-      "description": "Cervejas artesanais e porções generosas.",
-      "address": null,
+      "description": "Grab a Butterbeer at this magical inn!",
+      "address": 3,
       "manager": 2,
       "icon_url": ""
     }

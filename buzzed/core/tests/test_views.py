@@ -12,9 +12,19 @@ class AddressTestCase(APITestCase):
         self.user = User.objects.get(pk=1)
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
+        self.user_address = {
+            "country": "Westeros",
+            "state": "The North",
+            "city": "The Wall",
+            "neighborhood": "Castle Black",
+            "street": "Castle Black Main Gate",
+            "number": "1",
+            "complement": "Headquarters of the Night's Watch",
+            "postal_code": "NW001"
+        }
 
     def test_create_address(self):
-        user1 = User.objects.get(pk=2)
+        user1 = User.objects.get(pk=3)
         self.client.force_authenticate(user=user1)
         address_data = {
             "country": "United States",
@@ -50,10 +60,10 @@ class AddressTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_update_address(self):
-        address_data = {"city": "Nova Lima", "street": "Rua das Flores", "number": "80"}
+        address_data = {"city": "King's Landing", "street": "Red Keep street", "number": "80"}
         response = self.client.put(reverse("address"), data=address_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["country"], "Brazil")
+        self.assertEqual(response.data["country"], self.user_address["country"])
         for key in address_data:
             self.assertEqual(response.data[key], address_data[key])
 
@@ -61,6 +71,6 @@ class AddressTestCase(APITestCase):
         address_data = {"city": None, "street": "", "number": " "}
         response = self.client.put(reverse("address"), data=address_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["city"], "Belo Horizonte")
-        self.assertEqual(response.data["neighborhood"], "Savassi")
-        self.assertEqual(response.data["number"], "1000")
+        self.assertEqual(response.data["city"], self.user_address["city"])
+        self.assertEqual(response.data["neighborhood"], self.user_address["neighborhood"])
+        self.assertEqual(response.data["number"], self.user_address["number"])

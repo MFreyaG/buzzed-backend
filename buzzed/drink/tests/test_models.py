@@ -10,10 +10,10 @@ class FavoriteDrinkTestCase(TestCase):
         "addresses.json",
         "users.json",
         "ingredients.json",
-        "base_drink.json",
-        "store.json",
-        "store_drink.json",
-        "raw_drink.json",
+        "base_drinks.json",
+        "stores.json",
+        "store_drinks.json",
+        "raw_drinks.json",
     ]
 
     def test_create_favorite_store_drink(self):
