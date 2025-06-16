@@ -23,7 +23,7 @@ class StoreTestCase(APITestCase):
             "description": "Grab something strong, winter is coming!",
             "address": 3,
             "manager": 1,
-            "icon_url": ""
+            "icon_url": "",
         }
 
     def test_get_store_data(self):
@@ -35,7 +35,5 @@ class StoreTestCase(APITestCase):
             self.assertEqual(self.store[key], response[key])
 
     def test_get_store_with_wrong_pk_raises_exception(self):
-        response = self.client.get(
-            reverse("store", args=[5]), format="json"
-        )
+        response = self.client.get(reverse("store", args=[5]), format="json")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

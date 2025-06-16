@@ -20,7 +20,7 @@ class AddressTestCase(APITestCase):
             "street": "Castle Black Main Gate",
             "number": "1",
             "complement": "Headquarters of the Night's Watch",
-            "postal_code": "NW001"
+            "postal_code": "NW001",
         }
 
     def test_create_address(self):
