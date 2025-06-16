@@ -1,7 +1,7 @@
 [
   {
     "model": "user.user",
-    "pk": 1,
+    "pk": "11111111-1111-4111-a111-000000000001",
     "fields": {
       "username": "johnsnow",
       "email": "john.snow@thenightswatch.com",
@@ -15,7 +15,7 @@
   },
   {
     "model": "user.user",
-    "pk": 2,
+    "pk": "22222222-2222-4222-a222-000000000002",
     "fields": {
       "username": "spongebob",
       "email": "spongebob@bikini.bottom",
@@ -28,7 +28,7 @@
   },
   {
     "model": "user.user",
-    "pk": 3,
+    "pk": "33333333-3333-4333-a333-000000000003",
     "fields": {
       "username": "elliewilliams",
       "email": "ellie@jackson.wy",
@@ -40,7 +40,7 @@
   },
   {
     "model": "user.user",
-    "pk": 4,
+    "pk": "44444444-4444-4444-a444-000000000004",
     "fields": {
       "username": "barneystinson",
       "email": "barney@legendary.com",

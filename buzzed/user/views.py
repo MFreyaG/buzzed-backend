@@ -46,16 +46,16 @@ class LoginView(APIView):
         return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
 
-class UserView(APIView):
+class UserDetailView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request, user_pk):
-        user = get_object_or_404(User, pk=user_pk)
+    def get(self, request, user_id):
+        user = get_object_or_404(User, pk=user_id)
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
-    def put(self, request, user_pk):
-        user = get_object_or_404(User, pk=user_pk)
+    def put(self, request, user_id):
+        user = get_object_or_404(User, pk=user_id)
         if user.pk != request.user.pk:
             return Response(
                 {"detail": "You do not have permission to edit other users data."},

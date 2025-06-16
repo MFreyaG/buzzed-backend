@@ -72,16 +72,16 @@ class AuthTestCase(APITestCase):
         self.assertNotIn("refresh", response.data)
 
 
-class UserTestCase(APITestCase):
+class UserDetailTestCase(APITestCase):
     fixtures = ["addresses.json", "users.json"]
 
     def setUp(self):
-        self.user = User.objects.get(pk=1)
+        self.user = User.objects.get(pk="11111111-1111-4111-a111-000000000001")
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
 
     def test_get_user_data(self):
-        response = self.client.get(reverse("user", args=[self.user.pk]), format="json")
+        response = self.client.get(reverse("user-detail", args=[self.user.pk]), format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(self.user.username, response.data["username"])
         self.assertEqual(self.user.email, response.data["email"])
@@ -90,7 +90,10 @@ class UserTestCase(APITestCase):
         self.assertEqual(self.user.icon_url, response.data["icon_url"])
 
     def test_get_nonexistent_user_data_raises_exception(self):
-        response = self.client.get(reverse("user", args=[5]), format="json")
+        response = self.client.get(
+            reverse("user-detail", args=["00000000-0000-0000-0000-000000000000"]),
+            format="json",
+        )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_update_user_data(self):
@@ -101,7 +104,7 @@ class UserTestCase(APITestCase):
             "icon_url": "https://newtesturl.com",
         }
         response = self.client.put(
-            reverse("user", args=[self.user.pk]), data=user_data, format="json"
+            reverse("user-detail", args=[self.user.pk]), data=user_data, format="json"
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.user.refresh_from_db()
@@ -111,7 +114,7 @@ class UserTestCase(APITestCase):
         self.assertEqual(user_data["icon_url"], self.user.icon_url)
 
     def test_update_other_user_data_raises_exception(self):
-        user = User.objects.get(pk=2)
+        user = User.objects.get(pk="22222222-2222-4222-a222-000000000002")
         updated_user_data = {
             "username": "newtestname",
             "first_name": "Test",
@@ -119,16 +122,20 @@ class UserTestCase(APITestCase):
             "icon_url": "https://newtesturl.com",
         }
         response = self.client.put(
-            reverse("user", args=[user.pk]), data=updated_user_data, format="json"
+            reverse("user-detail", args=[user.pk]), data=updated_user_data, format="json"
         )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        user.refresh_from_db()
         self.assertNotEqual(user.username, updated_user_data["username"])
         self.assertNotEqual(user.first_name, updated_user_data["first_name"])
         self.assertNotEqual(user.last_name, updated_user_data["last_name"])
         self.assertNotEqual(user.icon_url, updated_user_data["icon_url"])
 
     def test_update_nonexistent_user_data_raises_exception(self):
-        response = self.client.get(reverse("user", args=[5]), format="json")
+        response = self.client.get(
+            reverse("user-detail", args=["00000000-0000-0000-0000-000000000000"]),
+            format="json",
+        )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
 
@@ -136,7 +143,7 @@ class ContactTestCase(APITestCase):
     fixtures = ["addresses.json", "users.json", "contacts.json"]
 
     def setUp(self):
-        self.user = User.objects.get(pk=2)
+        self.user = User.objects.get(pk="22222222-2222-4222-a222-000000000002")
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
 
@@ -147,7 +154,7 @@ class ContactTestCase(APITestCase):
         self.assertEqual(len(user_contacts), len(response.data))
 
     def test_create_contact(self):
-        contact_data = {"user2": 3}
+        contact_data = {"user2": "33333333-3333-4333-a333-000000000003"}
         response = self.client.post(
             reverse("user-contacts"),
             data=contact_data,
@@ -168,7 +175,7 @@ class ContactTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_create_same_user_contact(self):
-        contact_data = {"user2": 2}
+        contact_data = {"user2": "22222222-2222-4222-a222-000000000002"}
         response = self.client.post(
             reverse("user-contacts"),
             data=contact_data,
@@ -178,7 +185,8 @@ class ContactTestCase(APITestCase):
         self.assertIn("errors", response.data)
 
     def test_delete_contact(self):
-        delete_contact_data = {"user2": 1}
+        user2_uuid = "11111111-1111-4111-a111-000000000001"
+        delete_contact_data = {"user2": user2_uuid}
         response = self.client.delete(
             reverse("user-contacts"),
             data=delete_contact_data,
@@ -186,11 +194,11 @@ class ContactTestCase(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertFalse(
-            Contact.objects.filter(user1_id=self.user.id, user2_id=1).exists()
+            Contact.objects.filter(user1_id=self.user.id, user2_id=user2_uuid).exists()
         )
 
     def test_delete_non_existing_contact(self):
-        delete_contact_data = {"user2": 3}
+        delete_contact_data = {"user2": "33333333-3333-4333-a333-000000000003"}
         response = self.client.delete(
             reverse("user-contacts"),
             data=delete_contact_data,

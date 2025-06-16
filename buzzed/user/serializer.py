@@ -45,17 +45,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["username", "email", "first_name", "last_name", "icon_url"]
-
-    def to_representation(self, instance):
-        return {
-            "id": instance.id,
-            "email": instance.email,
-            "username": instance.username,
-            "first_name": instance.first_name,
-            "last_name": instance.last_name,
-            "icon_url": instance.icon_url,
-        }
+        fields = ["id", "username", "email", "first_name", "last_name", "icon_url"]
+        read_only_fields = ["id"]
 
 
 class ContactSerializer(serializers.Serializer):
