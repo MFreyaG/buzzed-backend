@@ -19,7 +19,7 @@
       "doc_number": "98765432100000",
       "description": "The legendary bar from How I Met Your Mother.",
       "address": 2,
-      "manager": 3,
+      "manager": 4,
       "icon_url": ""
     }
   },
@@ -27,11 +27,11 @@
     "model": "store.store",
     "pk": 3,
     "fields": {
-      "name": "The Leaky Cauldron",
+      "name": "The Bastard's alley",
       "doc_number": "11223344556677",
-      "description": "Grab a Butterbeer at this magical inn!",
+      "description": "Grab something strong, winter is coming!",
       "address": 3,
-      "manager": 2,
+      "manager": 1,
       "icon_url": ""
     }
   },
@@ -40,7 +40,7 @@
     "pk": 1,
     "fields": {
       "store": 1,
-      "user": 2
+      "user": 1
     }
   },
   {
@@ -48,38 +48,6 @@
     "pk": 2,
     "fields": {
       "store": 1,
-      "user": 3
-    }
-  },
-  {
-    "model": "store.store_admins",
-    "pk": 3,
-    "fields": {
-      "store": 2,
-      "user": 2
-    }
-  },
-  {
-    "model": "store.store_admins",
-    "pk": 4,
-    "fields": {
-      "store": 2,
-      "user": 3
-    }
-  },
-  {
-    "model": "store.store_admins",
-    "pk": 5,
-    "fields": {
-      "store": 3,
-      "user": 2
-    }
-  },
-  {
-    "model": "store.store_admins",
-    "pk": 6,
-    "fields": {
-      "store": 3,
       "user": 3
     }
   }

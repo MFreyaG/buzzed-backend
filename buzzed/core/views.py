@@ -26,7 +26,7 @@ class AddressView(APIView):
         return Response(serializer.errors)
 
     def put(self, request):
-        user = get_object_or_404(User, id=request.user.id)
+        user = get_object_or_404(User, pk=request.user.id)
         address = user.address
         serializer = AddressSerializer(
             address, data=request.data, context={"request": request}, partial=True

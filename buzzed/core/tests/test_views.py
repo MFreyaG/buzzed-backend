@@ -60,7 +60,11 @@ class AddressTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_update_address(self):
-        address_data = {"city": "King's Landing", "street": "Red Keep street", "number": "80"}
+        address_data = {
+            "city": "King's Landing",
+            "street": "Red Keep street",
+            "number": "80",
+        }
         response = self.client.put(reverse("address"), data=address_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["country"], self.user_address["country"])
@@ -72,5 +76,7 @@ class AddressTestCase(APITestCase):
         response = self.client.put(reverse("address"), data=address_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["city"], self.user_address["city"])
-        self.assertEqual(response.data["neighborhood"], self.user_address["neighborhood"])
+        self.assertEqual(
+            response.data["neighborhood"], self.user_address["neighborhood"]
+        )
         self.assertEqual(response.data["number"], self.user_address["number"])
