@@ -1,7 +1,7 @@
 [
   {
     "model": "store.store",
-    "pk": 1,
+    "pk": "11111111-1111-4111-a111-000000000001",
     "fields": {
       "name": "The Krusty Krab",
       "doc_number": "12345678901234",
@@ -13,7 +13,7 @@
   },
   {
     "model": "store.store",
-    "pk": 2,
+    "pk": "22222222-2222-4222-a222-000000000002",
     "fields": {
       "name": "McLaren's Pub",
       "doc_number": "98765432100000",
@@ -25,7 +25,7 @@
   },
   {
     "model": "store.store",
-    "pk": 3,
+    "pk": "33333333-3333-4333-a333-000000000003",
     "fields": {
       "name": "The Bastard's alley",
       "doc_number": "11223344556677",
@@ -39,7 +39,7 @@
     "model": "store.store_admins",
     "pk": 1,
     "fields": {
-      "store": 1,
+      "store": "11111111-1111-4111-a111-000000000001",
       "user": "11111111-1111-4111-a111-000000000001"
     }
   },
@@ -47,7 +47,7 @@
     "model": "store.store_admins",
     "pk": 2,
     "fields": {
-      "store": 1,
+      "store": "11111111-1111-4111-a111-000000000001",
       "user": "33333333-3333-4333-a333-000000000003"
     }
   }

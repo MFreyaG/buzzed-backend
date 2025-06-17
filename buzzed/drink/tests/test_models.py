@@ -43,7 +43,7 @@ class FavoriteDrinkTestCase(TestCase):
         with self.assertRaises(ValidationError):
             favorite_drink.full_clean()
 
-    def test_favorite_drink_persists_with_store_deletion(self):
+    def test_favorited_drink_is_preserved_when_store_drink_is_deleted(self):
         store_drink = StoreDrink.objects.get(pk=1)
 
         favorite_drink = FavoriteDrink.objects.create(

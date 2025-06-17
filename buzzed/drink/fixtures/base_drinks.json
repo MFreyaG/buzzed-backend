@@ -3,8 +3,8 @@
     "model": "drink.basedrink",
     "pk": 1,
     "fields": {
-      "name": "Caipirinha",
-      "alcohol_percentage": "14",
+      "name": "Winterfell Mulled Wine",
+      "alcohol_percentage": "12",
       "ingredients": [1, 2, 3, 4]
     }
   },
@@ -12,8 +12,8 @@
     "model": "drink.basedrink",
     "pk": 2,
     "fields": {
-      "name": "Gin Tônica",
-      "alcohol_percentage": "18",
+      "name": "Jellyfish Juice",
+      "alcohol_percentage": "8",
       "ingredients": [5, 6, 7, 8]
     }
   },
@@ -21,9 +21,18 @@
     "model": "drink.basedrink",
     "pk": 3,
     "fields": {
-      "name": "Negroni",
-      "alcohol_percentage": "20",
-      "ingredients": [9, 10, 1, 2]
+      "name": "Firefly Cocktail",
+      "alcohol_percentage": "25",
+      "ingredients": [9, 10, 11]
+    }
+  },
+  {
+    "model": "drink.basedrink",
+    "pk": 4,
+    "fields": {
+      "name": "The Suit Up",
+      "alcohol_percentage": "35",
+      "ingredients": [12, 13, 14]
     }
   }
 ]

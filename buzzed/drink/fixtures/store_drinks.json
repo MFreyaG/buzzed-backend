@@ -4,32 +4,43 @@
     "pk": 1,
     "fields": {
       "basedrink_ptr": 1,
-      "store": 1,
-      "price": "15.00",
-      "description": "Caipirinha clássica com limão.",
-      "image_url": "https://example.com/caipirinha.jpg"
+      "store": "33333333-3333-4333-a333-000000000003",
+      "price": "18.00",
+      "description": "Hot, spiced wine, perfect for the long nights of the Watch.",
+      "image_url": "https://example.com/winterfell-wine.jpg"
     }
   },
   {
     "model": "drink.storedrink",
     "pk": 2,
     "fields": {
-      "basedrink_ptr": 1,
-      "store": 2,
-      "price": "22.00",
-      "description": "Gin com tônica e zimbro.",
-      "image_url": "https://example.com/gin-tonica.jpg"
+      "basedrink_ptr": 2,
+      "store": "11111111-1111-4111-a111-000000000001",
+      "price": "12.50",
+      "description": "An electrifying and sweet cocktail, straight from the Jellyfish Fields!",
+      "image_url": "https://example.com/jellyfish-juice.jpg"
     }
   },
   {
     "model": "drink.storedrink",
     "pk": 3,
     "fields": {
-      "basedrink_ptr": 1,
-      "store": 3,
-      "price": "18.50",
-      "description": "Refrescante mojito com hortelã.",
-      "image_url": "https://example.com/mojito.jpg"
+      "basedrink_ptr": 3,
+      "store": "33333333-3333-4333-a333-000000000003",
+      "price": "25.00",
+      "description": "A strong drink to help you survive the night. Contains only safe ingredients.",
+      "image_url": "https://example.com/firefly-cocktail.jpg"
+    }
+  },
+  {
+    "model": "drink.storedrink",
+    "pk": 4,
+    "fields": {
+      "basedrink_ptr": 4,
+      "store": "22222222-2222-4222-a222-000000000002",
+      "price": "45.00",
+      "description": "Legen... wait for it... dary! A sophisticated cocktail for memorable moments.",
+      "image_url": "https://example.com/suit-up.jpg"
     }
   }
 ]

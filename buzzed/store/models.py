@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 from core.models import Address
@@ -5,6 +7,7 @@ from user.models import User
 
 
 class Store(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     doc_number = models.CharField(max_length=14)
     description = models.CharField(max_length=255, blank=True)

@@ -1,12 +1,16 @@
 [
-  { "model": "drink.ingredient", "pk": 1, "fields": { "name": "Vodka" } },
-  { "model": "drink.ingredient", "pk": 2, "fields": { "name": "Gin" } },
-  { "model": "drink.ingredient", "pk": 3, "fields": { "name": "Rum" } },
-  { "model": "drink.ingredient", "pk": 4, "fields": { "name": "Tequila" } },
-  { "model": "drink.ingredient", "pk": 5, "fields": { "name": "Triple Sec" } },
-  { "model": "drink.ingredient", "pk": 6, "fields": { "name": "Lime Juice" } },
-  { "model": "drink.ingredient", "pk": 7, "fields": { "name": "Cola" } },
-  { "model": "drink.ingredient", "pk": 8, "fields": { "name": "Tonic Water" } },
-  { "model": "drink.ingredient", "pk": 9, "fields": { "name": "Mint" } },
-  { "model": "drink.ingredient", "pk": 10, "fields": { "name": "Sugar Syrup" } }
+  { "model": "drink.ingredient", "pk": 1, "fields": { "name": "Red Wine" } },
+  { "model": "drink.ingredient", "pk": 2, "fields": { "name": "Cinnamon Stick" } },
+  { "model": "drink.ingredient", "pk": 3, "fields": { "name": "Cloves" } },
+  { "model": "drink.ingredient", "pk": 4, "fields": { "name": "Orange Slice" } },
+  { "model": "drink.ingredient", "pk": 5, "fields": { "name": "Pineapple Juice" } },
+  { "model": "drink.ingredient", "pk": 6, "fields": { "name": "Blue Curaçao" } },
+  { "model": "drink.ingredient", "pk": 7, "fields": { "name": "Strawberry Jelly" } },
+  { "model": "drink.ingredient", "pk": 8, "fields": { "name": "Sparkling Water" } },
+  { "model": "drink.ingredient", "pk": 9, "fields": { "name": "Whiskey" } },
+  { "model": "drink.ingredient", "pk": 10, "fields": { "name": "Honey" } },
+  { "model": "drink.ingredient", "pk": 11, "fields": { "name": "Lemon Juice" } },
+  { "model": "drink.ingredient", "pk": 12, "fields": { "name": "Scotch" } },
+  { "model": "drink.ingredient", "pk": 13, "fields": { "name": "Amaretto" } },
+  { "model": "drink.ingredient", "pk": 14, "fields": { "name": "Angostura Bitters" } }
 ]

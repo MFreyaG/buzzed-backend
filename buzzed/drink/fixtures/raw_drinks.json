@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "basedrink_ptr": 2,
-      "store_name": "Bar do Carlos"
+      "store_name": "The Eyrie"
     }
   },
   {
@@ -12,7 +12,7 @@
     "pk": 2,
     "fields": {
       "basedrink_ptr": 2,
-      "store_name": "Jango Balango"
+      "store_name": "The Krusty Krab"
     }
   },
   {
@@ -20,7 +20,7 @@
     "pk": 3,
     "fields": {
       "basedrink_ptr": 2,
-      "store_name": "A Taberna"
+      "store_name": "Jackson Settlement"
     }
   }
 ]
