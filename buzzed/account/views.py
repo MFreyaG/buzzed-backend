@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from auth.serializer import LoginSerializer, SignupSerializer
+from account.serializer import LoginSerializer, SignupSerializer
 
 
 class SignupView(APIView):

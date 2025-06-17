@@ -15,40 +15,39 @@ class FavoriteDrinkTestCase(TestCase):
         "store_drinks.json",
         "raw_drinks.json",
     ]
+    
+    def setUp(self):
+        self.user = User.objects.get(pk="11111111-1111-4111-a111-000000000001")
 
     def test_create_favorite_store_drink(self):
-        user = User.objects.get(pk=1)
         store_drink = StoreDrink.objects.get(pk=1)
 
-        FavoriteDrink.objects.create(user=user, store_drink=store_drink)
-        favorite_drink = FavoriteDrink.objects.get(user=user)
+        FavoriteDrink.objects.create(user=self.user, store_drink=store_drink)
+        favorite_drink = FavoriteDrink.objects.get(user=self.user)
 
         self.assertEqual(favorite_drink.store_drink.name, store_drink.name)
         self.assertEqual(favorite_drink.store_drink.store, store_drink.store)
 
     def test_create_favorite_raw_drink(self):
-        user = User.objects.get(pk=1)
         raw_drink = RawDrink.objects.get(pk=2)
 
-        FavoriteDrink.objects.create(user=user, raw_drink=raw_drink)
-        favorite_drink = FavoriteDrink.objects.get(user=user)
+        FavoriteDrink.objects.create(user=self.user, raw_drink=raw_drink)
+        favorite_drink = FavoriteDrink.objects.get(user=self.user)
 
         self.assertEqual(favorite_drink.raw_drink.name, raw_drink.name)
         self.assertEqual(favorite_drink.raw_drink.store_name, raw_drink.store_name)
 
-    def test_avorite_drink_without_drinks_error(self):
-        user = User.objects.get(pk=1)
-        favorite_drink = FavoriteDrink(user=user)
+    def test_favorite_drink_without_drinks_error(self):
+        favorite_drink = FavoriteDrink(user=self.user)
 
         with self.assertRaises(ValidationError):
             favorite_drink.full_clean()
 
     def test_favorite_drink_persists_with_store_deletion(self):
-        user = User.objects.get(pk=1)
         store_drink = StoreDrink.objects.get(pk=1)
 
         favorite_drink = FavoriteDrink.objects.create(
-            user=user, store_drink=store_drink
+            user=self.user, store_drink=store_drink
         )
         self.assertEqual(favorite_drink.store_drink, store_drink)
         self.assertIsNone(favorite_drink.raw_drink)

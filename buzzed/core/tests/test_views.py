@@ -9,7 +9,7 @@ class AddressTestCase(APITestCase):
     fixtures = ["addresses.json", "users.json"]
 
     def setUp(self):
-        self.user = User.objects.get(pk=1)
+        self.user = User.objects.get(pk="11111111-1111-4111-a111-000000000001")
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
         self.user_address = {
@@ -24,7 +24,7 @@ class AddressTestCase(APITestCase):
         }
 
     def test_create_address(self):
-        user1 = User.objects.get(pk=3)
+        user1 = User.objects.get(pk="33333333-3333-4333-a333-000000000003")
         self.client.force_authenticate(user=user1)
         address_data = {
             "country": "United States",

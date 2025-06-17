@@ -7,7 +7,7 @@
       "doc_number": "12345678901234",
       "description": "Home of the Krabby Patty!",
       "address": 1,
-      "manager": 2,
+      "manager": "22222222-2222-4222-a222-000000000002",
       "icon_url": ""
     }
   },
@@ -19,7 +19,7 @@
       "doc_number": "98765432100000",
       "description": "The legendary bar from How I Met Your Mother.",
       "address": 2,
-      "manager": 4,
+      "manager": "44444444-4444-4444-a444-000000000004",
       "icon_url": ""
     }
   },
@@ -31,7 +31,7 @@
       "doc_number": "11223344556677",
       "description": "Grab something strong, winter is coming!",
       "address": 3,
-      "manager": 1,
+      "manager": "11111111-1111-4111-a111-000000000001",
       "icon_url": ""
     }
   },
@@ -40,7 +40,7 @@
     "pk": 1,
     "fields": {
       "store": 1,
-      "user": 1
+      "user": "11111111-1111-4111-a111-000000000001"
     }
   },
   {
@@ -48,7 +48,7 @@
     "pk": 2,
     "fields": {
       "store": 1,
-      "user": 3
+      "user": "33333333-3333-4333-a333-000000000003"
     }
   }
 ]
