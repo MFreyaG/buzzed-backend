@@ -38,7 +38,7 @@ class UserDetailTestCase(APITestCase):
             "last_name": "User",
             "icon_url": "https://newtesturl.com",
         }
-        response = self.client.put(
+        response = self.client.patch(
             reverse("user-detail", args=[self.user.pk]), data=user_data, format="json"
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -48,7 +48,7 @@ class UserDetailTestCase(APITestCase):
         self.assertEqual(user_data["last_name"], self.user.last_name)
         self.assertEqual(user_data["icon_url"], self.user.icon_url)
 
-    def test_update_other_user_data_raises_exception(self):
+    def test_update_not_authenticated_user_data_raises_exception(self):
         user = User.objects.get(pk="22222222-2222-4222-a222-000000000002")
         updated_user_data = {
             "username": "newtestname",
@@ -56,7 +56,7 @@ class UserDetailTestCase(APITestCase):
             "last_name": "User",
             "icon_url": "https://newtesturl.com",
         }
-        response = self.client.put(
+        response = self.client.patch(
             reverse("user-detail", args=[user.pk]),
             data=updated_user_data,
             format="json",
