@@ -23,9 +23,9 @@ class AddressView(APIView):
             return Response(
                 AddressSerializer(address).data, status=status.HTTP_201_CREATED
             )
-        return Response(serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def put(self, request):
+    def patch(self, request):
         user = get_object_or_404(User, pk=request.user.id)
         address = user.address
         serializer = AddressSerializer(
@@ -34,4 +34,4 @@ class AddressView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

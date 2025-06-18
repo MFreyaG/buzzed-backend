@@ -18,15 +18,6 @@ class AddressSerializer(serializers.ModelSerializer):
             "postal_code",
         )
 
-    def to_internal_value(self, data):
-        clean_data = {
-            key: value
-            for key, value in data.items()
-            if value not in [None, ""]
-            and not (isinstance(value, str) and value.strip() == "")
-        }
-        return super().to_internal_value(clean_data)
-
     def create(self, validated_data):
         address = Address.objects.create(**validated_data)
 

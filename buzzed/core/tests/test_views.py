@@ -43,7 +43,7 @@ class AddressTestCase(APITestCase):
         for key in response.data:
             self.assertEqual(response.data[key], address_data[key])
 
-    def test_create_more_user_address_raises_exception(self):
+    def test_create_address_for_user_with_registered_address_raises_exception(self):
         address_data = {
             "country": "United States",
             "state": "Nevada",
@@ -58,6 +58,23 @@ class AddressTestCase(APITestCase):
             reverse("address"), data=address_data, format="json"
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+    
+    def test_create_address_with_wrong_data_raises_exception(self):
+        address_data = {
+            "country": None,
+            "state": "Nevada",
+            "city": "Rachel",
+            "neighborhood": "",
+            "street": "Groom Lake Road",
+            "number": "",
+            "complement": "Near Nellis Air Force Range",
+            "postal_code": "89003",
+        }
+        response = self.client.post(
+            reverse("address"), data=address_data, format="json"
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(len(response.data), 1)
 
     def test_update_address(self):
         address_data = {
@@ -65,7 +82,7 @@ class AddressTestCase(APITestCase):
             "street": "Red Keep street",
             "number": "80",
         }
-        response = self.client.put(reverse("address"), data=address_data, format="json")
+        response = self.client.patch(reverse("address"), data=address_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["country"], self.user_address["country"])
         for key in address_data:
@@ -73,10 +90,6 @@ class AddressTestCase(APITestCase):
 
     def test_wrong_address_data_does_not_update_data(self):
         address_data = {"city": None, "street": "", "number": " "}
-        response = self.client.put(reverse("address"), data=address_data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["city"], self.user_address["city"])
-        self.assertEqual(
-            response.data["neighborhood"], self.user_address["neighborhood"]
-        )
-        self.assertEqual(response.data["number"], self.user_address["number"])
+        response = self.client.patch(reverse("address"), data=address_data, format="json")
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(len(response.data), 2)
