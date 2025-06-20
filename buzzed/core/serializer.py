@@ -27,15 +27,3 @@ class AddressSerializer(serializers.ModelSerializer):
         user.save()
 
         return address
-
-    def to_representation(self, instance):
-        return {
-            "country": instance.country,
-            "state": instance.state,
-            "city": instance.city,
-            "neighborhood": instance.neighborhood,
-            "street": instance.street,
-            "number": instance.number,
-            "complement": instance.complement,
-            "postal_code": instance.postal_code,
-        }

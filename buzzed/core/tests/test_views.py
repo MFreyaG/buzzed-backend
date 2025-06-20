@@ -40,8 +40,7 @@ class AddressTestCase(APITestCase):
             reverse("address"), data=address_data, format="json"
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        for key in response.data:
-            self.assertEqual(response.data[key], address_data[key])
+        self.assertDictEqual(response.data, address_data)
 
     def test_create_address_for_user_with_registered_address_raises_exception(self):
         address_data = {
@@ -85,8 +84,9 @@ class AddressTestCase(APITestCase):
         response = self.client.patch(reverse("address"), data=address_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["country"], self.user_address["country"])
-        for key in address_data:
-            self.assertEqual(response.data[key], address_data[key])
+        self.assertEqual(response.data["city"], address_data["city"])
+        self.assertEqual(response.data["street"], address_data["street"])
+        self.assertEqual(response.data["number"], address_data["number"])
 
     def test_wrong_address_data_does_not_update_data(self):
         address_data = {"city": None, "street": "", "number": " "}
