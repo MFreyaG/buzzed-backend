@@ -22,7 +22,7 @@ class AddressSerializer(serializers.ModelSerializer):
         address = Address.objects.create(**validated_data)
 
         user_id = self.context["request"].user.id
-        user = User.objects.get(id=user_id)
+        user = User.objects.get(pk=user_id)
         user.address = address
         user.save()
 

@@ -42,7 +42,7 @@ class AddressTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertDictEqual(response.data, address_data)
 
-    def test_create_address_for_user_with_registered_address_raises_exception(self):
+    def test_create_address_for_user_with_registered_address_raises_bad_request(self):
         address_data = {
             "country": "United States",
             "state": "Nevada",
@@ -58,7 +58,7 @@ class AddressTestCase(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
     
-    def test_create_address_with_wrong_data_raises_exception(self):
+    def test_create_address_with_wrong_data_raises_bad_request(self):
         address_data = {
             "country": None,
             "state": "Nevada",

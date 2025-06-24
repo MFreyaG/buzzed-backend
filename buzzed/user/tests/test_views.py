@@ -24,7 +24,7 @@ class UserDetailTestCase(APITestCase):
         self.assertEqual(self.user.last_name, response.data["last_name"])
         self.assertEqual(self.user.icon_url, response.data["icon_url"])
 
-    def test_get_nonexistent_user_data_raises_exception(self):
+    def test_get_nonexistent_user_data_raises_not_found(self):
         response = self.client.get(
             reverse("user-detail", args=["00000000-0000-0000-0000-000000000000"]),
             format="json",
@@ -48,7 +48,7 @@ class UserDetailTestCase(APITestCase):
         self.assertEqual(user_data["last_name"], self.user.last_name)
         self.assertEqual(user_data["icon_url"], self.user.icon_url)
 
-    def test_update_not_authenticated_user_data_raises_exception(self):
+    def test_update_not_authenticated_user_data_raises_forbidden(self):
         user = User.objects.get(pk="22222222-2222-4222-a222-000000000002")
         updated_user_data = {
             "username": "newtestname",
@@ -68,7 +68,7 @@ class UserDetailTestCase(APITestCase):
         self.assertNotEqual(user.last_name, updated_user_data["last_name"])
         self.assertNotEqual(user.icon_url, updated_user_data["icon_url"])
 
-    def test_update_nonexistent_user_data_raises_exception(self):
+    def test_update_nonexistent_user_data_raises_not_found(self):
         response = self.client.get(
             reverse("user-detail", args=["00000000-0000-0000-0000-000000000000"]),
             format="json",
@@ -98,7 +98,7 @@ class ContactTestCase(APITestCase):
             format="json",
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        contact = Contact.objects.get(id=response.data["id"])
+        contact = Contact.objects.get(pk=response.data["id"])
         self.assertEqual(contact.user1.pk, response.data["follower"])
         self.assertEqual(contact.user2.pk, response.data["followed"])
 
