@@ -10,7 +10,7 @@
       "last_name": "Snow",
       "icon_url": "https://testurl.com",
       "is_active": true,
-      "address": 3
+      "address": "33333333-3333-4333-a333-000000000003"
     }
   },
   {
@@ -23,7 +23,7 @@
       "first_name": "SpongeBob",
       "last_name": "SquarePants",
       "is_active": true,
-      "address": 1
+      "address": "11111111-1111-4111-a111-000000000001"
     }
   },
   {
@@ -49,7 +49,7 @@
       "last_name": "Stinson",
       "is_active": true,
       "is_admin": true,
-      "address": 2
+      "address": "22222222-2222-4222-a222-000000000002"
     }
   }
 ]

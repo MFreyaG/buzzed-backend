@@ -15,7 +15,7 @@ class FavoriteDrinkTestCase(TestCase):
         "store_drinks.json",
         "raw_drinks.json",
     ]
-    
+
     def setUp(self):
         self.user = User.objects.get(pk="11111111-1111-4111-a111-000000000001")
 

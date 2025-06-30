@@ -1,7 +1,10 @@
+import uuid
+
 from django.db import models
 
 
 class Address(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     country = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
     city = models.CharField(max_length=30)

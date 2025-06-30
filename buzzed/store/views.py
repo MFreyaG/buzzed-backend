@@ -11,19 +11,20 @@ from store.serializer import StoreSerializer
 
 class StoreView(APIView):
     permission_classes = [permissions.IsAuthenticated]
-        
+
     def get(self, request): ...
-    
+
     def post(self, request): ...
+
 
 class StoreDetailView(APIView):
     permission_classes = [permissions.IsAuthenticated, IsManagerOrAdmin]
-    
+
     def get(self, request, store_pk):
         store = get_object_or_404(Store, pk=store_pk)
         serializer = StoreSerializer(store)
         return Response(serializer.data)
-    
+
     def patch(self, request, store_pk):
         store = get_object_or_404(Store, pk=store_pk)
         self.check_object_permissions(request, store)
@@ -34,7 +35,7 @@ class StoreDetailView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
     def delete(self, request, store_pk):
         store = get_object_or_404(Store, pk=store_pk)
         self.check_object_permissions(request, store)
