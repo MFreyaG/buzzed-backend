@@ -8,6 +8,7 @@ class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
         fields = (
+            "id",
             "country",
             "state",
             "city",
@@ -17,13 +18,3 @@ class AddressSerializer(serializers.ModelSerializer):
             "complement",
             "postal_code",
         )
-
-    def create(self, validated_data):
-        address = Address.objects.create(**validated_data)
-
-        user_id = self.context["request"].user.id
-        user = User.objects.get(pk=user_id)
-        user.address = address
-        user.save()
-
-        return address
