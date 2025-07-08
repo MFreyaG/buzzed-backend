@@ -2,17 +2,14 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from drink.models import RawDrink, StoreDrink
+from drink.models import Drink
 from user.models import User
 
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    store_drink = models.ForeignKey(
-        StoreDrink, on_delete=models.SET_NULL, null=True, blank=True
-    )
-    raw_drink = models.ForeignKey(
-        RawDrink, on_delete=models.SET_NULL, null=True, blank=True
+    drink = models.ForeignKey(
+        Drink, on_delete=models.SET_NULL, null=True, blank=True
     )
     score = models.SmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
@@ -23,12 +20,6 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.full_clean()
         super().save(*args, **kwargs)
-
-    def clean(self):
-        if not self.store_drink and not self.raw_drink:
-            raise ValidationError(
-                "FavoriteDrink needs a raw_drink or store_drink value."
-            )
 
     def __str__(self):
         return f"{self.user.username} - {self.created_at}"
