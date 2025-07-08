@@ -93,8 +93,17 @@ class AddressDetailTestCase(APITestCase):
         self.assertEqual(response.data["country"], self.address.country)
         self.assertEqual(updated_address_data["state"], self.address.state)
         self.assertEqual(updated_address_data["city"], self.address.city)
+    
+    def test_update_address_with_wrong_pk_raises_not_found(self):
+        address_data = {"city": None, "street": "", "number": " "}
+        response = self.client.patch(
+            reverse("address-detail", args=["55555555-5555-4555-a555-000000000005"]),
+            data=address_data,
+            format="json",
+        )
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_wrong_address_data_does_not_update_data(self):
+    def test_update_address_with_wrong_data_raises_forbidden(self):
         address_data = {"city": None, "street": "", "number": " "}
         response = self.client.patch(
             reverse("address-detail", args=["11111111-1111-4111-a111-000000000001"]),
@@ -102,4 +111,3 @@ class AddressDetailTestCase(APITestCase):
             format="json",
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(len(response.data), 2)

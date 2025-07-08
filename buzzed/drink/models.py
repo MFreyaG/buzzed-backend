@@ -1,3 +1,5 @@
+import uuid
+
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -12,47 +14,29 @@ class Ingredient(models.Model):
         return self.name
 
 
-class BaseDrink(models.Model):
+class Drink(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
+    store = models.ForeignKey(Store, on_delete=models.SET_NULL, null=True, blank=True)
+    store_name = models.CharField(max_length=50, blank=True)
+    description = models.CharField(max_length=255, blank=True)
+    price = models.CharField(max_length=20, blank=True)
     alcohol_percentage = models.CharField(max_length=10, blank=True)
+    image_url = models.URLField(null=True, blank=True)
     ingredients = models.ManyToManyField(
         Ingredient, related_name="%(class)s_ingredients", blank=True
     )
-
-
-class StoreDrink(BaseDrink):
-    store = models.ForeignKey(Store, on_delete=models.CASCADE)
-    price = models.CharField(max_length=20, blank=True)
-    description = models.CharField(max_length=255, blank=True)
-    image_url = models.URLField(null=True, blank=True)
-
+    
     def __str__(self):
-        return f"{self.name} - {self.store.name}"
-
-
-class RawDrink(BaseDrink):
-    store_name = models.CharField(max_length=50)
+        if self.store:
+            return f"{self.name} - {self.store.name}"
+        return f"{self.name} - {self.store_name}"
 
 
 class FavoriteDrink(models.Model):
-    store_drink = models.ForeignKey(
-        StoreDrink, on_delete=models.SET_NULL, null=True, blank=True
-    )
-    raw_drink = models.ForeignKey(
-        RawDrink, on_delete=models.SET_NULL, null=True, blank=True
-    )
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def save(self, *args, **kwargs):
-        self.full_clean()
-        super().save(*args, **kwargs)
-
-    def clean(self):
-        if not self.store_drink and not self.raw_drink:
-            raise ValidationError(
-                "FavoriteDrink needs a raw_drink or store_drink value."
-            )
-
     def __str__(self):
-        drink_name = self.store_drink.name if self.store_drink else self.raw_drink.name
-        return f"{self.user.username} - {drink_name}"
+        return f"{self.user.username} - {self.drink.name}"
