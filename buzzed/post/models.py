@@ -8,9 +8,7 @@ from user.models import User
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    drink = models.ForeignKey(
-        Drink, on_delete=models.SET_NULL, null=True, blank=True
-    )
+    drink = models.ForeignKey(Drink, on_delete=models.SET_NULL, null=True, blank=True)
     score = models.SmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )

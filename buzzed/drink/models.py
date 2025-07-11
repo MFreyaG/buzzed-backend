@@ -26,7 +26,7 @@ class Drink(models.Model):
     ingredients = models.ManyToManyField(
         Ingredient, related_name="%(class)s_ingredients", blank=True
     )
-    
+
     def __str__(self):
         if self.store:
             return f"{self.name} - {self.store.name}"
