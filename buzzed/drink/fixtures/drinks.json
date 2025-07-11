@@ -1,8 +1,11 @@
 [
   {
     "model": "drink.drink",
-    "pk": 1,
+    "pk": "11111111-1111-4111-a111-000000000001",
     "fields": {
+      "name": "Winterfell Mulled Wine",
+      "alcohol_percentage": "12",
+      "ingredients": [1, 2, 3, 4],
       "store": "33333333-3333-4333-a333-000000000003",
       "price": "18.00",
       "description": "Hot, spiced wine, perfect for the long nights of the Watch.",
@@ -11,8 +14,11 @@
   },
   {
     "model": "drink.drink",
-    "pk": 2,
+    "pk": "22222222-2222-4222-a222-000000000002",
     "fields": {
+      "name": "Jellyfish Juice",
+      "alcohol_percentage": "8",
+      "ingredients": [5, 6, 7, 8],
       "store": "11111111-1111-4111-a111-000000000001",
       "price": "12.50",
       "description": "An electrifying and sweet cocktail, straight from the Jellyfish Fields!",
@@ -21,8 +27,11 @@
   },
   {
     "model": "drink.drink",
-    "pk": 3,
+    "pk": "33333333-3333-4333-a333-000000000003",
     "fields": {
+      "name": "Firefly Cocktail",
+      "alcohol_percentage": "25",
+      "ingredients": [9, 10, 11],
       "store_name": "The Bastard's alley",
       "price": "25.00",
       "description": "A strong drink to help you survive the night. Contains only safe ingredients.",
@@ -31,8 +40,11 @@
   },
   {
     "model": "drink.drink",
-    "pk": 4,
+    "pk": "44444444-4444-4444-a444-000000000004",
     "fields": {
+      "name": "The Suit Up",
+      "alcohol_percentage": "35",
+      "ingredients": [12, 13, 14],
       "store": "22222222-2222-4222-a222-000000000002",
       "price": "45.00",
       "description": "Legen... wait for it... dary! A sophisticated cocktail for memorable moments.",

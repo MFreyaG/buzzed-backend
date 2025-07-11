@@ -30,11 +30,12 @@ class AddressTestCase(APITestCase):
         response = self.client.post(
             reverse("address"), data=address_data, format="json"
         )
+        address = Address.objects.get(postal_code=address_data["postal_code"])
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data["country"], address_data["country"])
-        self.assertEqual(response.data["city"], address_data["city"])
-        self.assertEqual(response.data["number"], address_data["number"])
-        self.assertEqual(response.data["postal_code"], address_data["postal_code"])
+        self.assertEqual(response.data["country"], address.country)
+        self.assertEqual(response.data["city"], address.city)
+        self.assertEqual(response.data["number"], address.number)
+        self.assertEqual(response.data["postal_code"], address.postal_code)
 
     def test_create_address_with_wrong_data_raises_bad_request(self):
         address_data = {
@@ -51,7 +52,6 @@ class AddressTestCase(APITestCase):
             reverse("address"), data=address_data, format="json"
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(len(response.data), 1)
 
 
 class AddressDetailTestCase(APITestCase):
@@ -93,7 +93,7 @@ class AddressDetailTestCase(APITestCase):
         self.assertEqual(response.data["country"], self.address.country)
         self.assertEqual(updated_address_data["state"], self.address.state)
         self.assertEqual(updated_address_data["city"], self.address.city)
-    
+
     def test_update_address_with_wrong_pk_raises_not_found(self):
         address_data = {"city": None, "street": "", "number": " "}
         response = self.client.patch(

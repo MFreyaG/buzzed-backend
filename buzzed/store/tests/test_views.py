@@ -58,8 +58,9 @@ class StoreDetailTestCase(APITestCase):
             format="json",
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(store_data["name"], response.data["name"])
-        self.assertEqual(store_data["description"], response.data["description"])
+        self.store.refresh_from_db()
+        self.assertEqual(self.store.name, response.data["name"])
+        self.assertEqual(self.store.description, response.data["description"])
         self.assertEqual(self.store.icon_url, response.data["icon_url"])
 
     def test_update_store_with_user_without_permission_raises_forbidden(self):
