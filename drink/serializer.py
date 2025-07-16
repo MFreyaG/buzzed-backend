@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from drink.models import Drink, FavoriteDrink, Ingredient
-from store.serializer import StoreSerializer
+from store.serializer import StoreReadSerializer
 from user.serializer import UserSerializer
 
 
@@ -19,7 +19,7 @@ class DrinkFilterSerializer(serializers.Serializer):
 
 
 class DrinkReadSerializer(serializers.ModelSerializer):
-    store = StoreSerializer(read_only=True)
+    store = StoreReadSerializer(read_only=True)
     ingredients = IngredientSerializer(many=True, read_only=True)
 
     class Meta:
