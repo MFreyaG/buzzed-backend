@@ -35,7 +35,7 @@ class ContactView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        contacts = Contact.objects.filter(user1__pk=request.user.pk)
+        contacts = Contact.objects.filter(follower__pk=request.user.pk)
         serializer = ContactSerializer(contacts, many=True)
         return Response(serializer.data)
 
@@ -55,7 +55,7 @@ class ContactView(APIView):
 
     def delete(self, request):
         contact = get_object_or_404(
-            Contact, user1_id=request.user.id, user2=request.data["user2"]
+            Contact, follower_id=request.user.id, followed=request.data["followed"]
         )
         contact.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

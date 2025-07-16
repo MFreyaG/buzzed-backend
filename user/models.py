@@ -25,19 +25,24 @@ class User(AbstractUser):
 
 
 class Contact(models.Model):
-    user1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="follower")
-    user2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followed")
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    follower = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="follower"
+    )
+    followed = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="followed"
+    )
 
     def save(self, *args, **kwargs):
         self.full_clean()
         super().save(*args, **kwargs)
 
     def clean(self):
-        if self.user1 == self.user2:
+        if self.follower == self.followed:
             raise ValidationError("A contact must have different users.")
 
     def __str__(self):
-        return f"{self.user1.username} - {self.user2.username}"
+        return f"{self.follower.username} - {self.followed.username}"
 
     class Meta:
-        unique_together = ("user1", "user2")
+        unique_together = ("follower", "followed")

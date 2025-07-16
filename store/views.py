@@ -6,7 +6,11 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from store.models import Store
 from store.permissions import IsManagerOrAdmin
-from store.serializer import StoreReadSerializer, StoreWriteSerializer, StoreFilterSerializer
+from store.serializer import (
+    StoreFilterSerializer,
+    StoreReadSerializer,
+    StoreWriteSerializer,
+)
 
 
 class StoreView(APIView):

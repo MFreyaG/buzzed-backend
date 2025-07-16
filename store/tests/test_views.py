@@ -13,35 +13,31 @@ class StoreTestCase(APITestCase):
         self.user = User.objects.get(username="johnsnow")
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
-    
+
     def test_get_store(self):
         filter_data = {"name": "The Bastard's alley"}
-        response = self.client.get(
-            reverse("store"), data=filter_data, format="json"
-        )
+        response = self.client.get(reverse("store"), data=filter_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data[0]["name"], "The Bastard's alley")
-        self.assertEqual(response.data[0]["description"], "Grab something strong, winter is coming!")
-    
+        self.assertEqual(
+            response.data[0]["description"], "Grab something strong, winter is coming!"
+        )
+
     def test_post_store(self):
         store_data = {
             "name": "The White Walker",
             "doc_number": "12345678910",
-            "manager": self.user.pk
+            "manager": self.user.pk,
         }
-        response = self.client.post(
-            reverse("store"), data=store_data, format="json"
-        )
+        response = self.client.post(reverse("store"), data=store_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         store = Store.objects.get(pk=response.data["id"])
         self.assertEqual(store_data["name"], store.name)
         self.assertEqual(store_data["manager"], store.manager.pk)
-        
+
     def test_post_store_with_wrong_data_raises_bad_request(self):
         store_data = {}
-        response = self.client.post(
-            reverse("store"), data=store_data, format="json"
-        )
+        response = self.client.post(reverse("store"), data=store_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 

@@ -19,13 +19,13 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ContactSerializer(serializers.Serializer):
-    user2 = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    followed = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     def create(self, validated_data):
-        user1 = self.context["request"].user
-        user2 = validated_data["user2"]
+        follower = self.context["request"].user
+        followed = validated_data["followed"]
 
-        contact = Contact.objects.create(user1=user1, user2=user2)
+        contact = Contact.objects.create(follower=follower, followed=followed)
         contact.full_clean()
         contact.save()
         return contact
@@ -33,6 +33,6 @@ class ContactSerializer(serializers.Serializer):
     def to_representation(self, instance):
         return {
             "id": instance.id,
-            "follower": instance.user1.id,
-            "followed": instance.user2.id,
+            "follower": instance.follower.id,
+            "followed": instance.followed.id,
         }

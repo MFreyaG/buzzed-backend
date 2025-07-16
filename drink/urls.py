@@ -10,9 +10,9 @@ from drink.views import (
 urlpatterns = [
     path("", DrinkView.as_view(), name="drink"),
     path("<uuid:drink_pk>", DrinkDetailView.as_view(), name="drink-detail"),
-    path("favorite-drink/", FavoriteDrinkView.as_view(), name="favorite-drink"),
+    path("favorite-drinks/", FavoriteDrinkView.as_view(), name="favorite-drink"),
     path(
-        "favorite-drink/<uuid:favorite_drink_pk>",
+        "favorite-drinks/<uuid:favorite_drink_pk>",
         FavoriteDrinkDetailView.as_view(),
         name="favorite-drink-detail",
     ),

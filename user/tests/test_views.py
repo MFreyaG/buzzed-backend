@@ -80,18 +80,18 @@ class ContactTestCase(APITestCase):
     fixtures = ["addresses.json", "users.json", "contacts.json"]
 
     def setUp(self):
-        self.user = User.objects.get(pk="22222222-2222-4222-a222-000000000002")
+        self.user = User.objects.get(username="spongebob")
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
 
     def test_get_user_followed_contacts(self):
         response = self.client.get(reverse("user-contacts"), format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        user_contacts = Contact.objects.filter(user1=self.user)
+        user_contacts = Contact.objects.filter(follower=self.user)
         self.assertEqual(len(user_contacts), len(response.data))
 
     def test_create_contact(self):
-        contact_data = {"user2": "33333333-3333-4333-a333-000000000003"}
+        contact_data = {"followed": "33333333-3333-4333-a333-000000000003"}
         response = self.client.post(
             reverse("user-contacts"),
             data=contact_data,
@@ -99,8 +99,8 @@ class ContactTestCase(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         contact = Contact.objects.get(pk=response.data["id"])
-        self.assertEqual(contact.user1.pk, response.data["follower"])
-        self.assertEqual(contact.user2.pk, response.data["followed"])
+        self.assertEqual(contact.follower.pk, response.data["follower"])
+        self.assertEqual(contact.followed.pk, response.data["followed"])
 
     def test_create_user_with_invalid_data(self):
         contact_data = {}
@@ -112,7 +112,7 @@ class ContactTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_create_same_user_contact(self):
-        contact_data = {"user2": "22222222-2222-4222-a222-000000000002"}
+        contact_data = {"followed": "22222222-2222-4222-a222-000000000002"}
         response = self.client.post(
             reverse("user-contacts"),
             data=contact_data,
@@ -122,8 +122,8 @@ class ContactTestCase(APITestCase):
         self.assertIn("errors", response.data)
 
     def test_delete_contact(self):
-        user2_uuid = "11111111-1111-4111-a111-000000000001"
-        delete_contact_data = {"user2": user2_uuid}
+        followed_uuid = "11111111-1111-4111-a111-000000000001"
+        delete_contact_data = {"followed": followed_uuid}
         response = self.client.delete(
             reverse("user-contacts"),
             data=delete_contact_data,
@@ -131,11 +131,13 @@ class ContactTestCase(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertFalse(
-            Contact.objects.filter(user1_id=self.user.id, user2_id=user2_uuid).exists()
+            Contact.objects.filter(
+                follower_id=self.user.id, followed_id=followed_uuid
+            ).exists()
         )
 
     def test_delete_non_existing_contact(self):
-        delete_contact_data = {"user2": "33333333-3333-4333-a333-000000000003"}
+        delete_contact_data = {"followed": "33333333-3333-4333-a333-000000000003"}
         response = self.client.delete(
             reverse("user-contacts"),
             data=delete_contact_data,
