@@ -1,0 +1,46 @@
+[
+  {
+    "model": "post.post",
+    "pk": "11111111-1111-4111-a111-000000000001",
+    "fields": {
+      "user": "11111111-1111-4111-a111-000000000001",
+      "drink": "11111111-1111-4111-a111-000000000001",
+      "score": 9,
+      "review": "Warms you up better than a fur cloak. The Night's Watch approves.",
+      "created_at": "2025-07-10T14:30:00Z"
+    }
+  },
+  {
+    "model": "post.post",
+    "pk": "22222222-2222-4222-a222-000000000002",
+    "fields": {
+      "user": "22222222-2222-4222-a222-000000000002",
+      "drink": "22222222-2222-4222-a222-000000000002",
+      "score": 10,
+      "review": "The best drink in the entire sea! It's even better when you're jellyfishing!",
+      "created_at": "2025-07-11T18:00:00Z"
+    }
+  },
+  {
+    "model": "post.post",
+    "pk": "33333333-3333-4333-a333-000000000003",
+    "fields": {
+      "user": "33333333-3333-4333-a333-000000000003",
+      "drink": "33333333-3333-4333-a333-000000000003",
+      "score": 8,
+      "review": "It's strong, gets the job done. Tastes better than any of the stuff Bill used to make.",
+      "created_at": "2025-07-12T11:15:00Z"
+    }
+  },
+  {
+    "model": "post.post",
+    "pk": "44444444-4444-4444-a444-000000000004",
+    "fields": {
+      "user": "44444444-4444-4444-a444-000000000004",
+      "drink": "44444444-4444-4444-a444-000000000004",
+      "score": 10,
+      "review": "This cocktail is legen... wait for it... dary! It's the perfect companion to an awesome night. Suit up!",
+      "created_at": "2025-07-12T12:00:00Z"
+    }
+  }
+]

@@ -31,9 +31,7 @@ class AddressDetailView(APIView):
 
     def patch(self, request, address_pk):
         address = get_object_or_404(Address, pk=address_pk)
-        serializer = AddressSerializer(
-            address, data=request.data, context={"request": request}, partial=True
-        )
+        serializer = AddressSerializer(address, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

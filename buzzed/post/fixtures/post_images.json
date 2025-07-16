@@ -1,0 +1,18 @@
+[
+  {
+    "model": "post.postimage",
+    "pk": "11111111-1111-4111-a111-000000000001",
+    "fields": {
+      "post": "11111111-1111-4111-a111-000000000001",
+      "image_url": "https://example.com/winterfell_review_image.jpg"
+    }
+  },
+  {
+    "model": "post.postimage",
+    "pk": "22222222-2222-4222-a222-000000000002",
+    "fields": {
+      "post": "33333333-3333-4333-a333-000000000003",
+      "image_url": "https://example.com/jackson_bunker_drink.jpg"
+    }
+  }
+]

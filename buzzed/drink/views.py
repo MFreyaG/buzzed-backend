@@ -10,6 +10,7 @@ from drink.serializer import (
     DrinkReadSerializer,
     DrinkWriteSerializer,
     FavoriteDrinkFilterSerializer,
+    FavoriteDrinkReadSerializer,
     FavoriteDrinkWriteSerializer,
 )
 
@@ -65,7 +66,7 @@ class FavoriteDrinkView(APIView):
         validated_filters = filter_serializer.validated_data
 
         favorite_drinks = FavoriteDrink.objects.filter(**validated_filters)
-        serializer = FavoriteDrinkWriteSerializer(favorite_drinks, many=True)
+        serializer = FavoriteDrinkReadSerializer(favorite_drinks, many=True)
         return Response(serializer.data, status.HTTP_200_OK)
 
     def post(self, request):
