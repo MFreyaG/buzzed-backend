@@ -6,14 +6,14 @@ from rest_framework.views import APIView
 from post.models import Post, PostImage, PostVideo
 from post.serializer import (
     PostFilterSerializer,
-    PostImageWriteSerializer,
-    PostReadSerializer,
-    PostWriteSerializer,
     PostImageFilterSerializer,
     PostImageReadSerializer,
+    PostImageWriteSerializer,
+    PostReadSerializer,
     PostVideoFilterSerializer,
     PostVideoReadSerializer,
-    PostVideoWriteSerializer
+    PostVideoWriteSerializer,
+    PostWriteSerializer,
 )
 
 

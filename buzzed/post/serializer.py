@@ -25,7 +25,8 @@ class PostReadSerializer(serializers.ModelSerializer):
             "review",
             "created_at",
         ]
-        
+
+
 class PostWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
@@ -41,29 +42,34 @@ class PostWriteSerializer(serializers.ModelSerializer):
 
 class PostImageFilterSerializer(serializers.Serializer):
     post = serializers.UUIDField(required=False)
-    
+
+
 class PostImageReadSerializer(serializers.ModelSerializer):
     post = PostReadSerializer(read_only=True)
-    
+
     class Meta:
         model = PostImage
         fields = ["id", "post", "image_url"]
-    
+
+
 class PostImageWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostImage
         fields = ["id", "post", "image_url"]
-        
+
+
 class PostVideoFilterSerializer(serializers.Serializer):
     post = serializers.UUIDField(required=False)
-    
+
+
 class PostVideoReadSerializer(serializers.ModelSerializer):
     post = PostReadSerializer(read_only=True)
-    
+
     class Meta:
         model = PostVideo
         fields = ["id", "post", "video_url"]
-    
+
+
 class PostVideoWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostVideo

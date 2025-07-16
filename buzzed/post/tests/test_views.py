@@ -162,17 +162,24 @@ class PostImageTestCase(APITestCase):
             reverse("post-image"), data=post_image_data, format="json"
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-    
+
     def test_get_image_post(self):
         filter_data = {"post": self.post.pk}
-        response = self.client.get(reverse("post-image"), data=filter_data, format="json")
+        response = self.client.get(
+            reverse("post-image"), data=filter_data, format="json"
+        )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data[0]["post"]["id"], str(self.post.pk))
-        self.assertEqual(response.data[0]["image_url"], "https://example.com/winterfell_review_image.jpg")
-    
+        self.assertEqual(
+            response.data[0]["image_url"],
+            "https://example.com/winterfell_review_image.jpg",
+        )
+
     def test_get_image_post_with_wrong_data_raises_bad_request(self):
         filter_data = {"post": 1}
-        response = self.client.get(reverse("post-image"), data=filter_data, format="json")
+        response = self.client.get(
+            reverse("post-image"), data=filter_data, format="json"
+        )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 
@@ -208,6 +215,7 @@ class PostImageDetailTestCase(APITestCase):
             format="json",
         )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
 
 class PostVideoTestCase(APITestCase):
     fixtures = [
@@ -245,20 +253,27 @@ class PostVideoTestCase(APITestCase):
             reverse("post-video"), data=post_video_data, format="json"
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-    
+
     def test_get_video_post(self):
         filter_data = {"post": self.post.pk}
-        response = self.client.get(reverse("post-video"), data=filter_data, format="json")
+        response = self.client.get(
+            reverse("post-video"), data=filter_data, format="json"
+        )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data[0]["post"]["id"], str(self.post.pk))
-        self.assertEqual(response.data[0]["video_url"], "https://example.com/winterfell_review_video.mp4")
-    
+        self.assertEqual(
+            response.data[0]["video_url"],
+            "https://example.com/winterfell_review_video.mp4",
+        )
+
     def test_get_video_post_with_wrong_data_raises_bad_request(self):
         filter_data = {"post": 1}
-        response = self.client.get(reverse("post-video"), data=filter_data, format="json")
+        response = self.client.get(
+            reverse("post-video"), data=filter_data, format="json"
+        )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        
-        
+
+
 class PostVideoDetailTestCase(APITestCase):
     fixtures = [
         "ingredients.json",

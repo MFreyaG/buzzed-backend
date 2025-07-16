@@ -4,8 +4,8 @@ from post.views import (
     PostDetailView,
     PostImageDetailView,
     PostImageView,
-    PostVideoView,
     PostVideoDetailView,
+    PostVideoView,
     PostView,
 )
 
