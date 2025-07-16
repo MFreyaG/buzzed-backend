@@ -173,8 +173,8 @@ class FavoriteDrinkTestCase(APITestCase):
             reverse("favorite-drink"), data=filter_data, format="json"
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data[0]["user"], self.user.pk)
-        self.assertEqual(response.data[0]["drink"], drink.pk)
+        self.assertEqual(response.data[0]["user"]["id"], str(self.user.pk))
+        self.assertEqual(response.data[0]["drink"]["id"], str(drink.pk))
 
     def test_post_favorite_drink(self):
         favorite_drink_data = {"user": self.user.pk, "drink": self.drink.pk}
